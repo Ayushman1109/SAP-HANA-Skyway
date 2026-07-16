@@ -1,0 +1,5 @@
+{
+  "Categories": "com.poc.hana.model.Categories",
+  "Products": "com.poc.hana.model.Products",
+  "Suppliers": "com.poc.hana.model.Suppliers"
+}
