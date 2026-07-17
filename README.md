@@ -1,4 +1,3 @@
-Copyright (c) 2026 SoftwareTree, Inc. All Rights Reserved.
 # SAP HANA ORM Skyway PoC
 
 This project is a Proof of Concept (PoC) validating Software Tree's [ORM Skyway](https://github.com/SoftwareTree/orm_skyway_automation) pipeline against **SAP HANA Cloud**. It demonstrates full CRUD operations, relationship mapping, and AI-agent integration for SAP HANA using JDX, Gilhari, and ORMCP.
