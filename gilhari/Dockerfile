@@ -8,9 +8,11 @@ WORKDIR /opt/hana-poc-service
 
 # bin/ includes all .class files (top-level and inner classes)
 # config/ includes .docker.jdx ORM spec, JDBC driver JAR, classnames_map.json
+# Build context is the project root (see build.cmd/build.sh: docker build -f gilhari/Dockerfile .)
+# so these ADD sources are still root-relative even though this Dockerfile lives in gilhari/.
 ADD bin ./bin
 ADD config ./config
-ADD gilhari_service.config .
+ADD gilhari/gilhari_service.config .
 
 EXPOSE 8081
 

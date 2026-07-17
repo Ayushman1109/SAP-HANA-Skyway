@@ -29,6 +29,25 @@ This project successfully proves that SAP HANA (an *Experimental* database in OR
 - Foreign-key relationships (e.g., Parent → Children collections)
 - Live natural-language querying via AI agents connected through MCP.
 
+## Project Structure
+
+This project uses the following file structure:
+```text
+hana-rel/
+├── .git/
+├── bin/                          # Compiled Java classes
+├── config/                       # Driver jars and generated reverse engineering configs
+├── gilhari/                      # Generated Gilhari configuration, Dockerfile, and curl scripts
+├── scripts/                      # Helper scripts
+├── src/                          # Generated Java object model source files
+├── .gitattributes                
+├── .gitignore                    
+├── LICENSE                       # Project license
+├── README.md                     # This file
+├── orm_skyway_config_hana.json   # Pipeline configuration (contains credentials, gitignored)
+└── sources.txt                   # Java source files compilation list (gitignored)
+```
+
 ## Prerequisites & Environment Setup
 
 - **Java & Python**: JDK 8+ and Python 3.8+
@@ -39,37 +58,27 @@ This project successfully proves that SAP HANA (an *Experimental* database in OR
 
 ### Configuring the Project
 
-For security and portability, database credentials and paths are configured via a JSON file and environment variables.
+For security and portability, database credentials and paths are configured via a JSON file. Environment variables are currently not supported in this pipeline, so please place your configuration directly in the JSON file.
 
-1. **Credentials (`.env`)**
-   Create a `.env` file in the root directory (this file is gitignored) and add your SAP HANA credentials:
-   ```env
-   JDBC_URL=jdbc:sap://<your-hana-host>:443?encrypt=true&validateCertificate=true
-   DB_USER=DBADMIN
-   DB_PASSWORD=<your_database_password>
-   JX_HOME=/path/to/Gilhari-0.8.0b-SDK
-   JDBC_DRIVER_JAR=/path/to/ngdbc-2.29.7.jar
-   ```
-
-2. **Pipeline Configuration (`orm_skyway_config_hana.json`)**
-   Create or edit `orm_skyway_config_hana.json` in the root directory (this file is also gitignored). You must set up the local paths for the JDX SDK and JDBC driver, and reference the environment variables for your credentials. A standard setup looks like this:
+1. **Pipeline Configuration (`orm_skyway_config_hana.json`)**
+   Create or edit `orm_skyway_config_hana.json` in the root directory (this file is gitignored so your credentials won't be committed). You must set up the local paths for the JDX SDK and JDBC driver, and add your actual SAP HANA credentials. A standard setup looks like this:
    ```json
    {
-       "jdbc_url": "${JDBC_URL}",
-       "db_schema": "DBADMIN",
-       "db_user": "${DB_USER}",
-       "db_password": "${DB_PASSWORD}",
-       "jdbc_driver_jar": "${JDBC_DRIVER_JAR}",
+       "jdbc_url": "jdbc:sap://<your-hana-host>:443?encrypt=true&validateCertificate=true",
+       "db_schema": "<your-db-schema>",
+       "db_user": "<your-db-username>",
+       "db_password": "<your-db-password>",
+       "jdbc_driver_jar": "/path/to/ngdbc-2.29.7.jar",
        "jdbc_driver_class": "com.sap.db.jdbc.Driver",
        "db_type": "SAPHANA",
-       "jx_home": "${JX_HOME}",
+       "jx_home": "/path/to/Gilhari-0.8.0b-SDK",
        "object_model_package": "com.poc.hana.model",
        "docker_image_name": "hana-poc-service",
        "docker_image_tag": "1.0",
        "gilhari_host_port": 80
    }
    ```
-   *Note: Ensure `jdbc_driver_jar` and `jx_home` point to the correct absolute paths on your local machine.*
+   *Note: Ensure `jdbc_driver_jar` and `jx_home` point to the correct absolute paths on your local machine. Do not use environment variables (e.g. `${JDBC_URL}`) in this file as they are currently unsupported.*
 
 ## Schema Setup
 
@@ -107,10 +116,10 @@ CREATE TABLE DBADMIN.PRODUCTS (
    Run the generated Docker container script:
    ```bash
    # Windows
-   run_docker_app.cmd
+   gilhari\run_docker_app.cmd
    
    # Linux/macOS
-   ./run_docker_app.sh
+   ./gilhari/run_docker_app.sh
    ```
    The service will be exposed on port 80.
 

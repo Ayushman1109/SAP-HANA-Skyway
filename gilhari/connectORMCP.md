@@ -14,33 +14,28 @@ natural language.
 
 - The `hana-poc-service` Gilhari microservice must be running:
   ```
-  run_docker_app.cmd    # Windows
-  ./run_docker_app.sh   # macOS / Linux
+  gilhari\run_docker_app.cmd    # Windows
+  ./gilhari/run_docker_app.sh   # macOS / Linux
   ```
 - ORMCP Server must be installed (see below).
 
 ---
 
-## Step 1 — Install ORMCP Server
+## Step 1 â€” Install ORMCP Server
 
-**After beta (public PyPI):**
 ```bash
 pip install ormcp-server
 ```
 
-> **macOS note — virtual environment location:** Do not create your venv inside `~/Desktop/` or `~/Documents/`. macOS restricts access to these folders for apps without Full Disk Access, causing Claude Desktop to throw a `PermissionError` on `pyvenv.cfg`. Use an unrestricted location instead, e.g. `~/.ormcp-venv`.
+No account, token, or beta-access request is needed â€” this installs from public PyPI directly.
 
+> **macOS note â€” virtual environment location:** Do not create your venv inside `~/Desktop/` or `~/Documents/`. macOS restricts access to these folders for apps without Full Disk Access, causing Claude Desktop to throw a `PermissionError` on `pyvenv.cfg`. Use an unrestricted location instead, e.g. `~/.ormcp-venv`.
 
-**Beta users** — request access at
-[softwaretree.com/products/ormcp](https://www.softwaretree.com/v1/products/ormcp/ormcp-introduction.php)
-then install with your token:
-```bash
-pip install --index-url https://YOUR_TOKEN@pypi.fury.io/softwaretree/   --extra-index-url https://pypi.org/simple ormcp-server
-```
+**If you have an existing Gemfury token** from an earlier beta install, it still works, but it's no longer required.
 
 ---
 
-## Step 2 — Configure your AI client
+## Step 2 â€” Configure your AI client
 
 ### Claude Desktop
 
@@ -68,7 +63,7 @@ Add the following to `claude_desktop_config.json`:
 }
 ```
 
-Claude Desktop starts the ORMCP server automatically — no separate terminal needed.
+Claude Desktop starts the ORMCP server automatically â€” no separate terminal needed.
 
 > **Windows note:** If `ormcp-server` is not found, use the full path instead:
 > `"command": "C:\Users\<YourUsername>\AppData\Roaming\Python\Python313\Scripts\ormcp-server.exe"`
@@ -101,13 +96,13 @@ See the [ORMCP documentation](https://github.com/SoftwareTree/ormcp-docs) for
 client-specific configuration (Gemini CLI, OpenAI GPTs, HTTP mode).
 
 > **HTTP mode:** ORMCP can also run as an HTTP server, making it accessible
-> from other machines, mobile devices, and any HTTP-capable client — not just
+> from other machines, mobile devices, and any HTTP-capable client â€” not just
 > local AI desktop apps. Start with `ormcp-server --http` and point clients
 > at `http://<host>:<port>/`. See the ORMCP documentation for details.
 
 ---
 
-## Step 3 — Example interactions
+## Step 3 â€” Example interactions
 
 Once connected, try asking your AI agent:
 

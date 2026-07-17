@@ -7,27 +7,24 @@ bin/
 # JDBC driver JAR (large binary, project-specific)
 config/ngdbc-2.29.7.jar
 
+# ORM spec files contain DB credentials — do not commit
+config/reverse_eng_template.config.jdx
+config/reverse_eng_template.config.docker.jdx
+config/reverse_eng_template.config.revjdx
 
 # curl output log
-curl.log
+curl*.log
 
 # Sensitive config (if you store credentials here)
-orm_skyway_config*.json
+orm_skyway_config_hana.json
 
 # softwaretree/orm_skyway Docker image: one-time license
 # acceptance marker -- local/machine-specific, not for VCS
 .orm_skyway_license_accepted
 
 # softwaretree/orm_skyway Docker image: extracted JDX SDK jars +
-# license, for running JDXDemo.bat/.sh on this host -- regenerable,
+# license, for running scripts/JDXDemo.bat/.sh on this host -- regenerable,
 # host-specific, and includes a license file, so not for VCS
 jdx_sandbox/
-
-# Environment variables
-.env
-.env.*
-
-# Ignore all JAR files
-*.jar
 
 sources.txt

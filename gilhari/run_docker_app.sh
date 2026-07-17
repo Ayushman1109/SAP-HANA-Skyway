@@ -7,7 +7,7 @@ if curl -fs --max-time 3 "http://localhost:80/gilhari/v1/health/check" > /dev/nu
 fi
 # Remove any existing container with this name (stopped or running)
 docker rm -f hana-poc-service > /dev/null 2>&1 || true
-docker run --platform linux/amd64 --add-host=host.docker.internal:host-gateway -d --name hana-poc-service -p 80:8081 hana-poc-service:1.0
+docker run --platform linux/amd64 --hostname hana-poc-service --add-host=host.docker.internal:host-gateway -d --name hana-poc-service -p 80:8081 hana-poc-service:1.0
 
 echo "Waiting for Gilhari microservice to start..."
 echo "(This may take up to 3 minutes for cloud or remote databases)"
