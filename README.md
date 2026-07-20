@@ -197,6 +197,5 @@ Once the AI Agent (like Claude) is connected to the ORMCP server, you can intera
 
 Through extensive testing, the following HANA-specific behaviors were documented:
 - **Type Mapping**: Standard types (`INTEGER`, `NVARCHAR`, `DECIMAL`, `TIMESTAMP`, `DATE`, `TIME`) map cleanly.
-- **NCLOB Columns**: NCLOB Columns error is fixed in JDX version 5.19 (the latest version is 5.20).
 - **BLOB Columns**: Silently skipped during reverse engineering (intentional/known limitation). The reason is that JSON cannot support binary/blob values, so JDX ignores those columns.
 - **Columns with Spaces**: E.g., `"DISPLAY NAME" NVARCHAR(100)` are silently skipped. This is intentional by-design behavior in JDX.
