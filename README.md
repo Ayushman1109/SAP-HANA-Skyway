@@ -36,10 +36,35 @@ This project uses the following file structure:
 hana-rel/
 ├── .git/
 ├── bin/                          # Compiled Java classes
+│   └── com/poc/hana/model/
 ├── config/                       # Driver jars and generated reverse engineering configs
+│   ├── JDXDemo.config
+│   ├── classnames_map.json
+│   ├── ngdbc-2.29.7.jar
+│   ├── reverse_eng_template.config
+│   ├── reverse_eng_template.config.docker.jdx
+│   ├── reverse_eng_template.config.jdx
+│   └── reverse_eng_template.config.revjdx
 ├── gilhari/                      # Generated Gilhari configuration, Dockerfile, and curl scripts
+│   ├── Dockerfile
+│   ├── build.cmd / .sh
+│   ├── connectORMCP.md
+│   ├── curl.log
+│   ├── curlWrite.log
+│   ├── gilhari_service.config
+│   ├── run_docker_app.cmd / .sh
+│   ├── sampleCurlCommands.cmd / .sh
+│   └── sampleCurlWriteCommands.cmd / .sh
 ├── scripts/                      # Helper scripts
+│   ├── JDXDemo.bat / .sh
+│   ├── JDXReverseEngineer.bat / .sh
+│   ├── compile.bat / .sh
+│   └── setEnvironment.bat / .sh
 ├── src/                          # Generated Java object model source files
+│   └── com/poc/hana/model/
+│       ├── Categories.java
+│       ├── Products.java
+│       └── Suppliers.java
 ├── .gitattributes                
 ├── .gitignore                    
 ├── LICENSE                       # Project license
