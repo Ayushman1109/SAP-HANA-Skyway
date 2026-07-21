@@ -1,5 +1,9 @@
 # SAP HANA ORM Skyway PoC
 
+Software Tree's ORM_Skyway automation tool connects your existing relational databases to AI agents — automatically. Point it at your database, and within minutes you have a secure, governed API layer that lets AI reason about your business objects: customers, orders, products, employees — whatever your domain holds.
+
+You can immediately start leveraging your data for AI applications through a secure and efficient ORM pipeline.
+
 This project is a Proof of Concept (PoC) validating Software Tree's [ORM Skyway](https://github.com/SoftwareTree/orm_skyway_automation) pipeline against **SAP HANA Cloud**. It demonstrates full CRUD operations, relationship mapping, and AI-agent integration for SAP HANA using JDX, Gilhari, and ORMCP.
 
 **Description**: A Proof of Concept (PoC) validating Software Tree's ORM Skyway pipeline against SAP HANA Cloud, demonstrating full CRUD operations, relationship mapping, and AI-agent integration via JDX, Gilhari, and ORMCP.
@@ -28,7 +32,7 @@ JDX Pipeline     ─────────────────────
                               ↑
 SAP HANA         ═════════════════════════════════  ← foundation
 ```
-This project successfully proves that SAP HANA (an *Experimental* database in ORM Skyway) supports:
+This project successfully proves that SAP HANA supports:
 - Full CRUD operations via REST
 - Foreign-key relationships (e.g., Parent → Children collections)
 - Live natural-language querying via AI agents connected through MCP.
@@ -112,7 +116,11 @@ For security and portability, database credentials and paths are configured via 
 ## Schema Setup
 
 The project uses a relational test schema in the `DBADMIN` schema to test foreign-key mapping.
-You can execute this SQL in your SAP HANA instance:
+For your convenience, we have provided a `data/` directory containing two SQL scripts:
+- `data/schema.sql`: Contains the `CREATE TABLE` statements for the schema.
+- `data/populate_data.sql`: Contains `INSERT` statements to prepopulate the database, allowing you to test out-of-the-box Natural Language Queries immediately.
+
+You can execute the schema creation SQL in your SAP HANA instance:
 
 ```sql
 CREATE TABLE DBADMIN.CATEGORIES (
