@@ -10,6 +10,12 @@ This project is a Proof of Concept (PoC) validating Software Tree's [ORM Skyway]
 
 **Topics**: `sap-hana`, `orm`, `jdx`, `gilhari`, `ormcp`, `ai-agent`, `mcp`, `java`, `python`, `rest-api`
 
+## Core Technologies
+
+- **JDX**: A lightweight, non-intrusive Java ORM engine that reverse-engineers relational schemas into a curated Java/JSON object model—the foundational data-access layer beneath Gilhari.
+- **Gilhari**: A RESTful microservice framework, built on JDX, that exposes your database as a governed, object-oriented REST API with no hand-written server code.
+- **ORMCP**: An MCP-compliant semantic layer that bridges AI agents to your database through Gilhari. It exposes enterprise data as curated business objects (rather than raw SQL), improving reasoning clarity, reducing token usage, and introducing a cleaner governance boundary.
+
 ## Project Overview
 
 **The pipeline workflow:**
